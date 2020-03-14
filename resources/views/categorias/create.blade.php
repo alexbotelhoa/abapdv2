@@ -5,9 +5,9 @@
     <h4>Categorias Adicionar</h4>
 
     <div class="card border">
-        <div class="card-body">
-            <form action="{{ route('categorias.store') }}" method="POST">
-                @csrf
+        <form action="{{ route('categorias.store') }}" method="POST">
+            @csrf
+            <div class="card-body">
                 <div class="form-group">
                     <label for="nome">Nome da Categoria</label>
                     <input type="text" class="form-control" name="nome" id="nome" placeholder="Categoria">
@@ -16,11 +16,13 @@
                     <label for="imposto">Imposto</label>
                     <input type="number" class="form-control" name="imposto" id="imposto" step="0.01" placeholder="0.00">
                 </div>
+            </div>
+            <div class="card-footer">
                 <button type="submit" class="btn btn-success btn-sm">Salvar</button>
                 <button type="reset" class="btn btn-primary btn-sm">Limpar</button>
                 <a href="{{ route('categorias.index') }}" class="btn btn-secondary btn-sm">Voltar</a>
-            </form>
-        </div>
+            </div>
+        </form>
     </div>
 
     @if($alerta != '')

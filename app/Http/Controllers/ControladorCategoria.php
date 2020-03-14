@@ -23,7 +23,8 @@ class ControladorCategoria extends Controller
     public function index()
     {
         $categorias = Categoria::all();
-        return view('categorias.index', compact('categorias'));
+        $alerta = Message::getSuccess();
+        return view('categorias.index', ['categorias' => $categorias, 'alerta' => $alerta]);
     }
 
     /**
@@ -57,8 +58,9 @@ class ControladorCategoria extends Controller
 
         $this->categoria->nome = $request->input('nome');
         $this->categoria->imposto = $request->input('imposto');
-
         $this->categoria->save();
+
+        Message::setSuccess("Registro incluído com sucesso!");
         return redirect()->route('categorias.index');
     }
 
@@ -83,7 +85,8 @@ class ControladorCategoria extends Controller
     public function edit($id)
     {
         $categoria = Categoria::find($id);
-        return view('categorias.edit', compact('categoria'));
+        $alerta = Message::getError();
+        return view('categorias.edit', ['categoria' => $categoria, 'alerta' => $alerta]);
     }
 
     /**
@@ -95,10 +98,25 @@ class ControladorCategoria extends Controller
      */
     public function update(Request $request, $id)
     {
+        if ($request->input('nome') == '') {
+            Message::setError("Informe o NOME!");
+            return redirect()->route('categorias.edit');
+        }
+
+        if ($request->input('imposto') == '') {
+            Message::setError("Informe o IMPOSTO!");
+            return redirect()->route('categorias.edit');
+        }
 
         $nome = $request->input('nome');
         $imposto = $request->input('imposto');
-        Categoria::where('id', '=', $id)->update(['nome' => $nome, 'imposto' => $imposto]);
+
+        Categoria::where('id', '=', $id)
+            ->update([
+                'nome' => $nome,
+                'imposto' => $imposto
+            ]);
+        Message::setSuccess("Registro alterado com sucesso!");
         return redirect()->route('categorias.index');
     }
 
@@ -111,6 +129,7 @@ class ControladorCategoria extends Controller
     public function destroy($id)
     {
         Categoria::destroy($id);
+        Message::setSuccess("Registro excluído com sucesso!");
         return redirect()->route('categorias.index');
     }
 }

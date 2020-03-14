@@ -27,7 +27,7 @@
                                     <td>
                                         <a href="{{ route('categorias.show', $c->id) }}" class="btn btn-light btn-sm">Visualizar</a>
                                         <a href="{{ route('categorias.edit', $c->id) }}" class="btn btn-primary btn-sm">Editar</a>
-                                            <input class="btn btn-danger btn-sm" type="submit" value="Excluir">
+                                        <input class="btn btn-danger btn-sm" type="submit" value="Excluir">
                                     </td>
                                 </form>
                             </tr>
@@ -43,5 +43,11 @@
             <a href="../public" class="btn btn-secondary btn-sm">Voltar</a>
         </div>
     </div>
+
+    @if($alerta != '')
+        <div class="alert alert-success" role="alert">
+            {{ $alerta }}
+        </div>
+    @endif
 
 @endsection

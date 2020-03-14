@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Categoria;
 use App\Produto;
+use App\Message;
 use Illuminate\Http\Request;
 
 class ControladorProduto extends Controller
@@ -23,7 +24,8 @@ class ControladorProduto extends Controller
     public function index()
     {
         $produtos = Produto::all();
-        return view('produtos.index', compact('produtos'));
+        $alerta = Message::getSuccess();
+        return view('produtos.index', ['produtos' => $produtos, 'alerta' => $alerta]);
     }
 
     /**
@@ -34,7 +36,8 @@ class ControladorProduto extends Controller
     public function create()
     {
         $categorias = Categoria::all();
-        return view('produtos.create', compact('categorias'));
+        $alerta = Message::getError();
+        return view('produtos.create', ['categorias' => $categorias, 'alerta' => $alerta]);
     }
 
     /**
@@ -45,10 +48,27 @@ class ControladorProduto extends Controller
      */
     public function store(Request $request)
     {
+        if ($request->input('nome') == '') {
+            Message::setError("Informe o NOME!");
+            return redirect()->route('produtos.create');
+        }
+
+        if ($request->input('preco') == '') {
+            Message::setError("Informe o PREÇO!");
+            return redirect()->route('produtos.create');
+        }
+
+        if ($request->input('categoria_id') == '') {
+            Message::setError("Informe a CATEGORIA!");
+            return redirect()->route('produtos.create');
+        }
+
         $this->produto->nome = $request->input('nome');
         $this->produto->preco = $request->input('preco');
         $this->produto->categoria_id = $request->input('categoria_id');
         $this->produto->save();
+
+        Message::setSuccess("Registro incluído com sucesso!");
         return redirect()->route('produtos.index');
     }
 
@@ -75,7 +95,8 @@ class ControladorProduto extends Controller
     {
         $produto = Produto::find($id);
         $categorias = Categoria::all();
-        return view('produtos.edit', ['produto' => $produto, 'categorias' => $categorias]);
+        $alerta = Message::getError();
+        return view('produtos.edit', ['produto' => $produto, 'categorias' => $categorias, 'alerta' => $alerta]);
     }
 
     /**
@@ -87,6 +108,21 @@ class ControladorProduto extends Controller
      */
     public function update(Request $request, $id)
     {
+        if ($request->input('nome') == '') {
+            Message::setError("Informe o NOME!");
+            return redirect()->route('produtos.edit');
+        }
+
+        if ($request->input('preco') == '') {
+            Message::setError("Informe o PREÇO!");
+            return redirect()->route('produtos.edit');
+        }
+
+        if ($request->input('categoria_id') == '') {
+            Message::setError("Informe a CATEGORIA!");
+            return redirect()->route('produtos.edit');
+        }
+
         $nome = $request->input('nome');
         $preco = $request->input('preco');
         $categoria_id = $request->input('categoria_id');
@@ -97,6 +133,7 @@ class ControladorProduto extends Controller
                 'preco' => $preco,
                 'categoria_id' => $categoria_id
             ]);
+        Message::setSuccess("Registro alterado com sucesso!");
         return redirect()->route('produtos.index');
     }
 
@@ -109,6 +146,7 @@ class ControladorProduto extends Controller
     public function destroy($id)
     {
         Produto::destroy($id);
+        Message::setSuccess("Registro excluído com sucesso!");
         return redirect()->route('produtos.index');
     }
 }

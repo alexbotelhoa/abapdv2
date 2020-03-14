@@ -22,14 +22,14 @@
                             <td>{{ $c->id }}</td>
                             <td>{{ $c->nome }}</td>
                             <td>{{ $c->preco }}</td>
-                            <td>{{ $c->categoria_id }}</td>
+                            <td>{{ $c->categoria->nome }}</td>
                             <form action="{{route('produtos.destroy', $c['id'])}}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <td>
                                     <a href="{{ route('produtos.show', $c->id) }}" class="btn btn-light btn-sm">Visualizar</a>
                                     <a href="{{ route('produtos.edit', $c->id) }}" class="btn btn-primary btn-sm">Editar</a>
-                                        <input class="btn btn-danger btn-sm" type="submit" value="Excluir">
+                                    <input class="btn btn-danger btn-sm" type="submit" value="Excluir">
                                 </td>
                             </form>
                         </tr>
@@ -45,5 +45,11 @@
             <a href="../public" class="btn btn-secondary btn-sm">Voltar</a>
         </div>
     </div>
+
+    @if($alerta != '')
+        <div class="alert alert-success" role="alert">
+            {{ $alerta }}
+        </div>
+    @endif
 
 @endsection

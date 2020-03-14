@@ -25,11 +25,19 @@
                         @endforeach
                     </select>
                 </div>
-                <button type="submit" class="btn btn-success btn-sm">Salvar</button>
-                <button type="reset" class="btn btn-primary btn-sm">Limpar</button>
-                <a href="{{ route('produtos.index') }}" class="btn btn-secondary btn-sm">Voltar</a>
             </form>
         </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-success btn-sm">Salvar</button>
+            <button type="reset" class="btn btn-primary btn-sm">Limpar</button>
+            <a href="{{ route('produtos.index') }}" class="btn btn-secondary btn-sm">Voltar</a>
+        </div>
     </div>
+
+    @if($alerta != '')
+        <div class="alert alert-danger" role="alert">
+            {{ $alerta }}
+        </div>
+    @endif
 
 @endsection

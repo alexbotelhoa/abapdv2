@@ -14,6 +14,8 @@
                 <label for="imposto">Imposto</label>
                 <input type="number" class="form-control" name="imposto" id="imposto" readonly value="{{ $categoria->imposto }}">
             </div>
+        </div>
+        <div class="card-footer">
             <a href="{{ route('categorias.index') }}" class="btn btn-secondary btn-sm">Voltar</a>
         </div>
     </div>

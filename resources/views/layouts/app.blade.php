@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="{{ asset('css/app.css') }}">
     <title>PDV</title>
     <style>
         body {

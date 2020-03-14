@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Carrinho;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,12 +14,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
+
+
+
 Route::get('/', function () {
-    return view('home');
+    return redirect()->route('carrinho.index');
 });
+
+Route::resource('/carrinho', 'ControladorCarrinho');
+Route::get('/carrinho/{carrinho}/destroy', 'ControladorCarrinho@destroy')->name('carrinho.destroy');
 
 Route::resource('/categorias', 'ControladorCategoria');
 
 Route::resource('/produtos', 'ControladorProduto');
 
 Route::resource('/vendas', 'ControladorVenda');
+
+Route::get('limparCarrinho', function () {
+    if (session('carrinho') != "") Carrinho::limparCarrinho();
+    return redirect()->route('carrinho.index');
+})->name('limparCarrinho');

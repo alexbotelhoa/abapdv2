@@ -18,6 +18,8 @@
                 <label for="categoria_id">Categoria</label>
                 <input type="text" class="form-control" name="categoria_id" id="categoria_id" readonly value="{{ $categoria->nome }}">
             </div>
+        </div>
+        <div class="card-footer">
             <a href="{{ route('produtos.index') }}" class="btn btn-secondary btn-sm">Voltar</a>
         </div>
     </div>

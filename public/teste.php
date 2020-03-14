@@ -1,53 +1,28 @@
-<?php
-$indicesServer = array('PHP_SELF',
-    'argv',
-    'argc',
-    'GATEWAY_INTERFACE',
-    'SERVER_ADDR',
-    'SERVER_NAME',
-    'SERVER_SOFTWARE',
-    'SERVER_PROTOCOL',
-    'REQUEST_METHOD',
-    'REQUEST_TIME',
-    'REQUEST_TIME_FLOAT',
-    'QUERY_STRING',
-    'DOCUMENT_ROOT',
-    'HTTP_ACCEPT',
-    'HTTP_ACCEPT_CHARSET',
-    'HTTP_ACCEPT_ENCODING',
-    'HTTP_ACCEPT_LANGUAGE',
-    'HTTP_CONNECTION',
-    'HTTP_HOST',
-    'HTTP_REFERER',
-    'HTTP_USER_AGENT',
-    'HTTPS',
-    'REMOTE_ADDR',
-    'REMOTE_HOST',
-    'REMOTE_PORT',
-    'REMOTE_USER',
-    'REDIRECT_REMOTE_USER',
-    'SCRIPT_FILENAME',
-    'SERVER_ADMIN',
-    'SERVER_PORT',
-    'SERVER_SIGNATURE',
-    'PATH_TRANSLATED',
-    'SCRIPT_NAME',
-    'REQUEST_URI',
-    'PHP_AUTH_DIGEST',
-    'PHP_AUTH_USER',
-    'PHP_AUTH_PW',
-    'AUTH_TYPE',
-    'PATH_INFO',
-    'ORIG_PATH_INFO') ;
+<link type="text/css" rel="stylesheet" href="css/app.css">
 
-echo '<table cellpadding="10">' ;
-foreach ($indicesServer as $arg) {
-    if (isset($_SERVER[$arg])) {
-        echo '<tr><td>'.$arg.'</td><td>' . $_SERVER[$arg] . '</td></tr>' ;
-    }
-    else {
-        echo '<tr><td>'.$arg.'</td><td>-</td></tr>' ;
-    }
-}
-echo '</table>';
-?>
+<i class="fas fa-shopping-cart"></i>
+<i class="fas fa-chart-pie"></i>
+<i class="fas fa-chart-bar"></i>
+<i class="fas fa-address-book"></i>
+<i class="fas fa-external-link-alt"></i>
+<div class="hike-technical-data">
+    <span class="ascent">Ascesa</span>
+</div>
+
+<a href="#" class="external">External Link Pseudo</a>
+<br>
+External Link icon using &lt;i&gt; tag: <i class="fas fa-external-link-alt"></i>
+<br>
+<a href="#" class="other">Other Icon Pseudo</a>
+
+<p><br>
+    <i>EDIT - Solution:</i><br> Font-Awesome 5 solid styles need to have font-weight: 900 for custom CSS styles.<br>
+    Source: <a href="https://github.com/FortAwesome/Font-Awesome/issues/11946">https://github.com/FortAwesome/Font-Awesome/issues/11946</a>
+</p>
+<a href="#" class="solution">External icon working</a>
+
+<p>
+    <b>Still wondering why the 'Other Icon Pseudo' is working without being 900 while part of the solid styles.</b>
+</p>
+
+<script src="js/app.js"></script>

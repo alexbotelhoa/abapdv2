@@ -34,20 +34,23 @@ class ControladorCarrinho extends Controller
         $produtos = Produto::all();
         $carrinho = session('carrinho');
         $valorSemImposto = 0;
-        $valorComImposto = 0;
+        $valorDoImposto = 0;
+        $valorTotal = 0;
         $success = Message::getSuccess();
         $error = Message::getError();
 
         foreach ($carrinho as $c) {
             $valorSemImposto += $c['quantidade'] * $c['preco'];
-            $valorComImposto += $c['total'];
+            $valorDoImposto += $c['total'] - ($c['quantidade'] * $c['preco']);
+            $valorTotal += $c['total'];
         }
 
         return view('home', [
             'produtos' => $produtos,
             'carrinho' => $carrinho,
             'valorSemImposto' => $valorSemImposto,
-            'valorComImposto' => $valorComImposto,
+            'valorDoImposto' => $valorDoImposto,
+            'valorTotal' => $valorTotal,
             'success' => $success,
             'error' => $error
         ]);
@@ -97,10 +100,11 @@ class ControladorCarrinho extends Controller
             'quantidade' => $request->quantidade,
             'preco' => $produtos->preco,
             'imposto' => $produtos->categoria->imposto,
-            'total' => $request->quantidade * $produtos->preco * $produtos->categoria->imposto
+            'total' => $request->quantidade * $produtos->preco * (($produtos->categoria->imposto / 100) + 1)
         ];
         $carrinho[] = $dados;
         session(['carrinho' => $carrinho]);
+        Message::setSuccess("Produto adicionado com sucesso!");
         return redirect()->route('carrinho.index');
     }
 
@@ -150,6 +154,7 @@ class ControladorCarrinho extends Controller
         $index = $this->getIndex($id, $carrinho);
         array_splice($carrinho, $index, 1);
         session(['carrinho' => $carrinho]);
+        Message::setSuccess("Produto excluído com sucesso!");
         return redirect()->route('carrinho.index');
     }
 

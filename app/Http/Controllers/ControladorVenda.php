@@ -92,7 +92,7 @@ class ControladorVenda extends Controller
         }
 
         Message::setSuccess("Venda realizada com sucesso!");
-        return redirect()->route('carrinho.index');
+        return redirect()->route('limparCarrinho');
     }
 
     /**

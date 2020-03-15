@@ -4,34 +4,33 @@
 
     <div class="card border">
         <div class="card-body">
-            <h5 class="card-title">Cadastro de Vendas</h5>
-            @if(count($vendas) > 0)
+            <h4 class="card-title"><i class="fas fa-piggy-bank"></i> Cadastro de Vendas</h4>
+            @if(count($carrinhos) > 0)
                 <table class="table table-ordered table-hover">
                     <thead>
-                    <tr>
-                        <th>Código</th>
-                        <th>Nr Venda</th>
-                        <th>Nome do Produto</th>
-                        <th>Quantidade</th>
-                        <th>Preço</th>
-                        <th>Imposto</th>
+                    <tr class="text-center">
+                        <th>Ordem</th>
+                        <th>Carrinho</th>
+                        <th>Data da Venda</th>
+                        <th>Valor</th>
                         <th>Opções</th>
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($vendas as $c)
-                        <tr>
-                            <td>{{ $c->id }}</td>
-                            <td>{{ $c->cart }}</td>
-                            <td>{{ $c->produto_id }}</td>
-                            <td>{{ $c->quantidade }}</td>
-                            <td>{{ $c->preco }}</td>
-                            <td>{{ $c->imposto }}</td>
-                            <td>
-                                <a href="{{ route('produtos.show', $c->id) }}" class="btn btn-light btn-sm">Visualizar</a>
-                                <a href="{{ route('produtos.edit', $c->id) }}" class="btn btn-primary btn-sm">Editar</a>
-                                <a href="{{ route('produtos.destroy', $c->id) }}" class="btn btn-danger btn-sm">Excluir</a>
-                            </td>
+                    @foreach($carrinhos as $c)
+                        <tr class="text-center">
+                            <td>{{ $c['nr'] }}</td>
+                            <td>{{ $c['carrinho'] }}</td>
+                            <td>{{ date_format($c['data'], "d/m/Y H:i:s") }}</td>
+                            <td>{{ number_format($c['valor'], 2, ',', '.') }}</td>
+                            <form action="{{route('vendas.destroy', $c['carrinho'])}}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <td>
+                                    <a href="{{ route('vendas.show', $c['carrinho']) }}" class="btn btn-light btn-sm">Visualizar</a>
+                                    <input class="btn btn-danger btn-sm" type="submit" value="Excluir">
+                                </td>
+                            </form>
                         </tr>
                     @endforeach
                     </tbody>
@@ -41,8 +40,18 @@
             @endif
         </div>
         <div class="card-footer">
-            <a href="{{ route('vendas.create') }}" class="btn btn-success btn-sm">Adicionar</a>
-            <a href="../public" class="btn btn-secondary btn-sm">Voltar</a>
+            <div class="row">
+                <div class="col-sm-4">
+                    <a href="../public" class="btn btn-secondary btn-sm">Voltar</a>
+                </div>
+                <div class="col-sm-8">
+                    @if($success != '')
+                        <div class="form-control form-control-sm alert-success" align="center">
+                            {{ $success }}
+                        </div>
+                    @endif
+                </div>
+            </div>
         </div>
     </div>
 

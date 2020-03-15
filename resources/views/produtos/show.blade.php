@@ -12,7 +12,7 @@
             </div>
             <div class="form-group">
                 <label for="preco">Preço</label>
-                <input type="number" class="form-control" name="preco" id="preco" readonly value="{{ $produto->preco }}">
+                <input type="text" class="form-control" name="preco" id="preco" readonly value="{{ number_format($produto->preco, 2, ',', '.') }}">
             </div>
             <div class="form-group">
                 <label for="categoria_id">Categoria</label>

@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded">
     <div class="container d-flex justify-content-between">
-        <a href="#" class="navbar-brand d-flex align-items-center">
+        <a href="../public" class="navbar-brand d-flex align-items-center">
             <img src="{{ asset('/img/coin.png') }}">&nbsp;<strong>PDV</strong>
         </a>
 

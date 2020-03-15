@@ -18,17 +18,22 @@
                 </div>
             </div>
             <div class="card-footer">
-                <button type="submit" class="btn btn-success btn-sm">Salvar</button>
-                <button type="reset" class="btn btn-primary btn-sm">Limpar</button>
-                <a href="{{ route('categorias.index') }}" class="btn btn-secondary btn-sm">Voltar</a>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <button type="submit" class="btn btn-success btn-sm">Salvar</button>
+                        <button type="reset" class="btn btn-primary btn-sm">Limpar</button>
+                        <a href="{{ route('categorias.index') }}" class="btn btn-secondary btn-sm">Voltar</a>
+                    </div>
+                    <div class="col-sm-8">
+                        @if($alerta != '')
+                            <div class="form-control form-control-sm text-center alert-danger">
+                                {{ $alerta }}
+                            </div>
+                        @endif
+                    </div>
+                </div>
             </div>
         </form>
     </div>
-
-    @if($alerta != '')
-        <div class="alert alert-danger" role="alert">
-            {{ $alerta }}
-        </div>
-    @endif
 
 @endsection

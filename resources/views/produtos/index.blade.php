@@ -4,11 +4,11 @@
 
     <div class="card border">
         <div class="card-body">
-            <h5 class="card-title">Cadastro de Produtos</h5>
+            <h4 class="card-title"><i class="fas fa-pallet"></i> Cadastro de Produtos</h4>
             @if(count($produtos) > 0)
                 <table class="table table-ordered table-hover">
                     <thead>
-                    <tr>
+                    <tr class="text-center">
                         <th>Código</th>
                         <th>Nome do Produto</th>
                         <th>Preço</th>
@@ -18,11 +18,11 @@
                     </thead>
                     <tbody>
                     @foreach($produtos as $c)
-                        <tr>
+                        <tr class="text-center">
                             <td>{{ $c->id }}</td>
-                            <td>{{ $c->nome }}</td>
-                            <td>{{ $c->preco }}</td>
-                            <td>{{ $c->categoria->nome }}</td>
+                            <td class="text-left">{{ $c->nome }}</td>
+                            <td>{{ number_format($c['preco'], 2, ',', '.') }}</td>
+                            <td class="text-left">{{ $c->categoria->nome }}</td>
                             <form action="{{route('produtos.destroy', $c['id'])}}" method="POST">
                                 @csrf
                                 @method('DELETE')
@@ -41,15 +41,20 @@
             @endif
         </div>
         <div class="card-footer">
-            <a href="{{ route('produtos.create') }}" class="btn btn-success btn-sm">Adicionar</a>
-            <a href="../public" class="btn btn-secondary btn-sm">Voltar</a>
+            <div class="row">
+                <div class="col-sm-4">
+                    <a href="{{ route('produtos.create') }}" class="btn btn-success btn-sm">Adicionar</a>
+                    <a href="../public" class="btn btn-secondary btn-sm">Voltar</a>
+                </div>
+                <div class="col-sm-8">
+                    @if($alerta != '')
+                        <div class="form-control form-control-sm text-center alert-success">
+                            {{ $alerta }}
+                        </div>
+                    @endif
+                </div>
+            </div>
         </div>
     </div>
-
-    @if($alerta != '')
-        <div class="alert alert-success" role="alert">
-            {{ $alerta }}
-        </div>
-    @endif
 
 @endsection

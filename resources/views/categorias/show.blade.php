@@ -12,7 +12,7 @@
             </div>
             <div class="form-group">
                 <label for="imposto">Imposto</label>
-                <input type="number" class="form-control" name="imposto" id="imposto" readonly value="{{ $categoria->imposto }}">
+                <input type="text" class="form-control" name="imposto" id="imposto" readonly value="{{ $categoria->imposto }}%">
             </div>
         </div>
         <div class="card-footer">

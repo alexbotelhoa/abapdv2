@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Categoria;
 use App\Message;
+use App\Produto;
 use Illuminate\Http\Request;
 
 class ControladorCategoria extends Controller
@@ -23,8 +24,13 @@ class ControladorCategoria extends Controller
     public function index()
     {
         $categorias = Categoria::all();
-        $alerta = Message::getSuccess();
-        return view('categorias.index', ['categorias' => $categorias, 'alerta' => $alerta]);
+        $success = Message::getSuccess();
+        $error = Message::getError();
+        return view('categorias.index', [
+            'categorias' => $categorias,
+            'success' => $success,
+            'error' => $error
+        ]);
     }
 
     /**
@@ -128,8 +134,13 @@ class ControladorCategoria extends Controller
      */
     public function destroy($id)
     {
-        Categoria::destroy($id);
-        Message::setSuccess("Registro excluído com sucesso!");
+        $produto = Produto::all()->where('categoria_id', '=', $id);
+        if (count($produto) == null) {
+            Categoria::destroy($id);
+            Message::setSuccess("Registro excluído com sucesso!");
+        } else {
+            Message::setError("Existe produto vinculado a esse registro!");
+        }
         return redirect()->route('categorias.index');
     }
 }

@@ -5,9 +5,9 @@
     <h4>Produtos Adicionar</h4>
 
     <div class="card border">
-        <div class="card-body">
-            <form action="{{ route('produtos.store') }}" method="POST">
-                @csrf
+        <form action="{{ route('produtos.store') }}" method="POST">
+            @csrf
+            <div class="card-body">
                 <div class="form-group">
                     <label for="nome">Nome do Produto</label>
                     <input type="text" class="form-control" name="nome" id="nome" placeholder="Produto">
@@ -25,19 +25,24 @@
                         @endforeach
                     </select>
                 </div>
-            </form>
-        </div>
-        <div class="card-footer">
-            <button type="submit" class="btn btn-success btn-sm">Salvar</button>
-            <button type="reset" class="btn btn-primary btn-sm">Limpar</button>
-            <a href="{{ route('produtos.index') }}" class="btn btn-secondary btn-sm">Voltar</a>
-        </div>
+            </div>
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <button type="submit" class="btn btn-success btn-sm">Salvar</button>
+                        <button type="reset" class="btn btn-primary btn-sm">Limpar</button>
+                        <a href="{{ route('produtos.index') }}" class="btn btn-secondary btn-sm">Voltar</a>
+                    </div>
+                    <div class="col-sm-8">
+                        @if($alerta != '')
+                            <div class="form-control form-control-sm text-center alert-danger">
+                                {{ $alerta }}
+                            </div>
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
-
-    @if($alerta != '')
-        <div class="alert alert-danger" role="alert">
-            {{ $alerta }}
-        </div>
-    @endif
 
 @endsection

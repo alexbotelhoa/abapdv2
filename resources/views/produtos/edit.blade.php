@@ -5,10 +5,11 @@
     <h4>Produtos Editar</h4>
 
     <div class="card border">
-        <div class="card-body">
-            <form action="{{ route('produtos.update', $produto->id) }}" method="POST">
-                @csrf
-                @method('PUT')
+        <form action="{{ route('produtos.update', $produto->id) }}" method="POST">
+            @csrf
+            @method('PUT')
+            <div class="card-body">
+
                 <div class="form-group">
                     <label for="nome">Nome do Produto</label>
                     <input type="text" class="form-control" name="nome" id="nome" placeholder="Produto" value="{{ $produto->nome }}">
@@ -25,12 +26,12 @@
                         @endforeach
                     </select>
                 </div>
-            </form>
-        </div>
-        <div class="card-footer">
-            <button type="submit" class="btn btn-success btn-sm">Salvar</button>
-            <a href="{{ route('produtos.index') }}" class="btn btn-secondary btn-sm">Voltar</a>
-        </div>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-success btn-sm">Salvar</button>
+                <a href="{{ route('produtos.index') }}" class="btn btn-secondary btn-sm">Voltar</a>
+            </div>
+        </form>
     </div>
 
     @if($alerta != '')

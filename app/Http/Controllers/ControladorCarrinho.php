@@ -9,11 +9,11 @@ use Illuminate\Http\Request;
 class ControladorCarrinho extends Controller
 {
     private $carrinho = [
-        ['id' => 1, 'produto_id' => '10', 'produto_nome' => 'Produto 10', 'quantidade' => '2', 'preco' => '10','imposto' => '4', 'total' => '20.80'],
-        ['id' => 2, 'produto_id' => '20', 'produto_nome' => 'Produto 20', 'quantidade' => '4', 'preco' => '20','imposto' => '8', 'total' => '86.40'],
-        ['id' => 3, 'produto_id' => '30', 'produto_nome' => 'Produto 30', 'quantidade' => '6', 'preco' => '30','imposto' => '12', 'total' => '201.60'],
-        ['id' => 4, 'produto_id' => '40', 'produto_nome' => 'Produto 40', 'quantidade' => '8', 'preco' => '40','imposto' => '16', 'total' => '371.20'],
-        ['id' => 5, 'produto_id' => '50', 'produto_nome' => 'Produto 50', 'quantidade' => '10', 'preco' => '50','imposto' => '20', 'total' => '600.00']
+        ['id' => 1, 'produto_id' => '6', 'produto_nome' => 'Produto 101', 'quantidade' => '2', 'preco' => '10','imposto' => '5', 'total' => '21.00'],
+        ['id' => 2, 'produto_id' => '7', 'produto_nome' => 'Produto 102', 'quantidade' => '4', 'preco' => '20','imposto' => '10', 'total' => '88.00'],
+        ['id' => 3, 'produto_id' => '8', 'produto_nome' => 'Produto 103', 'quantidade' => '6', 'preco' => '30','imposto' => '15', 'total' => '207.00'],
+        ['id' => 4, 'produto_id' => '9', 'produto_nome' => 'Produto 104', 'quantidade' => '8', 'preco' => '40','imposto' => '20', 'total' => '384.00'],
+        ['id' => 5, 'produto_id' => '10', 'produto_nome' => 'Produto 105', 'quantidade' => '10', 'preco' => '50','imposto' => '25', 'total' => '625.00']
     ];
 
     public function __construct()
@@ -88,11 +88,6 @@ class ControladorCarrinho extends Controller
         $id = end($carrinho)['id'];
 
         $produtos = Produto::find($request->produto_id);
-        $nome = $produtos->nome;
-        $nome = $produtos->nome;
-        $nome = $produtos->nome;
-        $nome = $produtos->nome;
-        $nome = $produtos->nome;
         $dados = [
             'id' => $id + 1,
             'produto_id' => $produtos->id,

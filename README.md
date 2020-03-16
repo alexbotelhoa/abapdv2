@@ -7,7 +7,7 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
-## Sobre o Laravel
+## Sistema desenvolvido utilizando o Framework Laravel
 
 O Laravel é uma estrutura de aplicativos da web com sintaxe expressiva e elegante. Acreditamos que o desenvolvimento deve ser uma experiência agradável e criativa para ser verdadeiramente gratificante. O Laravel elimina as dificuldades do desenvolvimento, facilitando tarefas comuns usadas em muitos projetos da web, como::
 

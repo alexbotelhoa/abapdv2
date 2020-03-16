@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3fc04018-8cb4-4a36-81d0-a15dd1476fd0" name="Default" comment="Done:&#10; - Layout = 100%&#10; - Menu = 100%&#10; - Categoria = 100%&#10; - Produto = 100%&#10; - Carrinho = 100%&#10; - Venda = 100%&#10; - Alertas = 100%&#10; - Restrições = 100%">
+    <list default="true" id="3fc04018-8cb4-4a36-81d0-a15dd1476fd0" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/home.blade.php" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" />
     </list>
@@ -21,8 +21,8 @@
       <file leaf-file-name="home.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/home.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="74" column="42" lean-forward="false" selection-start-line="74" selection-start-column="42" selection-end-line="74" selection-end-column="42" />
+            <state relative-caret-position="396">
+              <caret line="82" column="52" lean-forward="true" selection-start-line="82" selection-start-column="52" selection-end-line="82" selection-end-column="52" />
               <folding />
             </state>
           </provider>
@@ -368,7 +368,7 @@
       <workItem from="1584192716928" duration="52946000" />
       <workItem from="1584298729336" duration="749000" />
       <workItem from="1584304548292" duration="9000" />
-      <workItem from="1584365845562" duration="281000" />
+      <workItem from="1584365845562" duration="383000" />
     </task>
     <task id="LOCAL-00001" summary="Pornto:&#10; - Carrinho = 80%&#10; - Categoria = 100%&#10; - Produto = 100%&#10; - Venda = 0%">
       <created>1584144893257</created>
@@ -398,11 +398,18 @@
       <option name="project" value="LOCAL" />
       <updated>1584298872512</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Done:&#10; - Layout = 100%&#10; - Menu = 100%&#10; - Categoria = 100%&#10; - Produto = 100%&#10; - Carrinho = 100%&#10; - Venda = 100%&#10; - Alertas = 100%&#10; - Restrições = 100%">
+      <created>1584366138640</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1584366138640</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="111223000" />
+    <option name="totallyTimeSpent" value="111325000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
@@ -793,8 +800,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/home.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="74" column="42" lean-forward="false" selection-start-line="74" selection-start-column="42" selection-end-line="74" selection-end-column="42" />
+        <state relative-caret-position="396">
+          <caret line="82" column="52" lean-forward="true" selection-start-line="82" selection-start-column="52" selection-end-line="82" selection-end-column="52" />
           <folding />
         </state>
       </provider>

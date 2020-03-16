@@ -101,7 +101,7 @@
                         </tfoot>
                     </table>
                     <div class="text-black-50">
-                        Nota: Esses 5 produtos são criados automáticamente pela classe 'Carrinho', para agilizar a exepriência com o sistema.
+                        Nota: Esses 5 produtos são criados automaticamente pela classe 'Carrinho', para agilizar a experiência com o sistema.
                     </div>
                 </div>
             </form>
